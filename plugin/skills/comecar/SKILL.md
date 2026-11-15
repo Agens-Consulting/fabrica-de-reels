@@ -22,6 +22,18 @@ export PYTHONUTF8=1
 
 Lê antes de começar (do motor): `hooks/como-escrever-hooks-texto.md`, `legendas/como-escrever-legendas.md`, `ctas/como-construir-cta.md`, `recursos/README.md`, `publicacao/regras.md`, `fabrica/README.md`. São as regras que fazem os vídeos funcionar. Lê-os à medida que precisas, não todos de uma vez.
 
+## Antes de tudo: código de acesso
+
+A Fábrica de Reels é só para pessoas registadas pela Agens. Se já existir `~/.fabrica-de-reels/acesso.json` com `"ok": true`, salta este passo (o código só se pede na primeira utilização).
+
+Se não existir, pede numa mensagem curta: "Para começar, escreve o código de acesso de 6 dígitos que a Agens te deu." Quando a pessoa o escrever, valida (Mac e Windows têm `curl`):
+```bash
+curl -s -X POST https://xqbaqifcyxtajrsbpwga.supabase.co/functions/v1/acesso -H "Content-Type: application/json" -d '{"codigo":"<6 dígitos>"}'
+```
+- `{"ok":true,"nome":"..."}` → grava `~/.fabrica-de-reels/acesso.json` com `{"ok": true, "codigo": "<código>", "nome": "<nome>", "validado_em": "<data ISO>"}` (cria a pasta se faltar), cumprimenta a pessoa pelo nome e segue para o passo 0.
+- `{"ok":false}` → diz que o código não é válido e deixa tentar outra vez. À terceira falha: "Pede o teu código à Agens (agens.pt) e volta a escrever /comecar." e para aqui.
+- Sem resposta (sem internet) → pede para verificar a ligação e tentar de novo. **Nunca avances sem um `ok:true`.**
+
 ## 0. Boas-vindas (1 mensagem)
 
 Explica em 5-6 linhas: o que são trial reels (reels que o Instagram mostra só a quem não te segue, para testar sem estragar o perfil), o que a fábrica faz (todos os dias publica reels de texto sobre B-rolls teus; quando gravas um vídeo a falar, edita-o e publica-o; cada reel oferece um recurso grátis por DM a quem comenta uma palavra; de 14 em 14 dias analisa e melhora sozinha). Diz quanto tempo demora (~45-60 min, dá para parar e retomar com /comecar) e o que vai ser preciso:

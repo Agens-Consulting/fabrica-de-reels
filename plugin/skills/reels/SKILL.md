@@ -11,6 +11,8 @@ cd "$P"
 PY=.venv/bin/python; [ -f .venv/Scripts/python.exe ] && PY=.venv/Scripts/python.exe
 export PYTHONUTF8=1
 ```
+Se não existir `~/.fabrica-de-reels/acesso.json` com `"ok": true`, para aqui e segue a skill fabrica-de-reels:comecar (pede o código de acesso).
+
 Se `onboarding/estado.json` não disser que o onboarding acabou, diz em que passo ficou e oferece continuar com /fabrica-de-reels:comecar.
 
 ## 1. Atualizar o motor (sempre, em silêncio)
