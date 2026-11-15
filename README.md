@@ -11,6 +11,8 @@ Funciona em **Mac e Windows**.
 
 ## O que precisas
 
+0. **Acesso ao repositório** (é privado): uma conta no GitHub (github.com/signup) e o convite da Agens aceite (chega por email). No terminal, entra no GitHub uma vez: `gh auth login` (ou, no Mac, o Git pede o login na primeira instalação).
+
 1. **Claude Code** instalado e com sessão iniciada (plano Pro ou Max): https://claude.com/claude-code
    - No Windows, instala também o **Git for Windows** (https://git-scm.com/download/win), que o Claude Code precisa.
 2. Conta de **Instagram profissional** (criador ou empresa).
@@ -23,7 +25,7 @@ Funciona em **Mac e Windows**.
 Abre o Claude Code num terminal e escreve, uma linha de cada vez:
 
 ```
-/plugin marketplace add danielmcosta38-spec/fabrica-de-reels
+/plugin marketplace add Agens-Consulting/fabrica-de-reels
 /plugin install fabrica-de-reels@fabrica-de-reels
 ```
 
