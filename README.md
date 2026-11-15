@@ -1,5 +1,9 @@
 # Fábrica de Reels — plugin do Claude Code
 
+[![Ver o vídeo: instalar e começar em 1 minuto](docs/capa.jpg)](https://agens-consulting.github.io/fabrica-de-reels/)
+
+**▶ [Vê o vídeo de 1 minuto](https://agens-consulting.github.io/fabrica-de-reels/)** e instala a seguir.
+
 Trial reels de Instagram em piloto automático. Depois de instalado, escreves `/comecar` e o Claude trata do resto contigo:
 
 - **Todos os dias**, publica sozinho reels de texto sobre B-rolls teus, como *trial reels* (só aparecem a quem ainda não te segue).
