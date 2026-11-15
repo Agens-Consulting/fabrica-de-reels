@@ -11,32 +11,28 @@ Funciona em **Mac e Windows**.
 
 ## O que precisas
 
-0. **Acesso ao repositório** (é privado): uma conta no GitHub (github.com/signup) e o convite da Agens aceite (chega por email). Para o Git conseguir descarregar o plugin privado, entra no GitHub uma vez no terminal: instala o GitHub CLI (Mac: `brew install gh`; Windows: `winget install GitHub.cli`) e corre `gh auth login` e depois `gh auth setup-git`.
-
-1. **Claude Code** instalado e com sessão iniciada (plano Pro ou Max): https://claude.com/claude-code
-   - No Windows, instala também o **Git for Windows** (https://git-scm.com/download/win), que o Claude Code precisa.
+1. A **app do Claude** para computador (https://claude.com/download), com sessão iniciada num plano **Pro ou Max**.
 2. Conta de **Instagram profissional** (criador ou empresa).
 3. Conta na **Zernio** (https://zernio.com): é ela que publica e responde aos comentários. O `/comecar` explica como criar.
-4. **Google Drive** ligada ao Claude: em claude.ai → Definições → Conectores → Google Drive → Ligar.
+4. O **código de acesso** de 6 dígitos que a Agens te deu.
 5. Uns 5 GB livres no disco e o computador ligado de manhã.
 
-## Instalar (2 minutos)
+## Instalar (2 minutos, tudo na app do Claude)
 
-Abre o Claude Code num terminal e escreve, uma linha de cada vez:
+1. **Liga a Google Drive:** Settings → Connectors → Google Drive → Connect.
+2. **Adiciona o plugin:** Customize → Plugins → **Add marketplace**, escreve `Agens-Consulting/fabrica-de-reels` e confirma.
+3. Na lista aparece a **Fábrica de Reels**: carrega em **Install**.
+4. Abre o separador **Code**, escreve `/comecar` (no menu aparece como `/fabrica-de-reels:comecar`) e mete o código de acesso.
+
+O Claude guia-te pelo resto: instala o que falta, liga a Zernio e a Drive, estuda o teu perfil, aprova temas contigo, cria os primeiros recursos e mostra-te vídeos de ensaio. Demora 45-60 minutos e podes parar a meio: voltas com `/comecar`.
+
+<details><summary>Preferes o terminal?</summary>
 
 ```
 /plugin marketplace add Agens-Consulting/fabrica-de-reels
 /plugin install fabrica-de-reels@fabrica-de-reels
 ```
-
-Fecha e volta a abrir o Claude Code. Depois escreve:
-
-```
-/comecar
-```
-(no menu aparece como `/fabrica-de-reels:comecar`; também podes escrever só "quero começar a fábrica de reels")
-
-e segue as instruções. O onboarding demora 45-60 minutos (instala o que falta, liga a Zernio e a Drive, estuda o teu perfil, aprova temas contigo, cria os primeiros recursos e mostra-te vídeos de ensaio). Podes parar a meio e continuar mais tarde com `/comecar`.
+</details>
 
 ## No dia a dia
 
@@ -49,11 +45,7 @@ e segue as instruções. O onboarding demora 45-60 minutos (instala o que falta,
 
 ## Atualizar
 
-```
-/plugin marketplace update fabrica-de-reels
-/plugin update fabrica-de-reels@fabrica-de-reels
-```
-Reinicia o Claude Code e escreve `/reels` (atualiza a tua pasta sem tocar nos teus dados).
+Customize → Plugins → Fábrica de Reels → **Update** (ou, no terminal, `/plugin marketplace update fabrica-de-reels` e `/plugin update fabrica-de-reels@fabrica-de-reels`). Reinicia a app e escreve `/reels` (atualiza a tua pasta sem tocar nos teus dados).
 
 ## Privacidade
 
