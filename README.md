@@ -55,7 +55,7 @@ Customize → Plugins → Fábrica de Reels → **Update** (ou, no terminal, `/p
 
 A tua chave da Zernio e as tuas configurações ficam só no teu computador, no ficheiro `.env` da tua pasta de trabalho.
 
-**Caso de estudo (fase gratuita):** nesta fase a Fábrica de Reels é gratuita em troca de a Agens a usar como caso de estudo. Se aceitares no `/comecar`, o teu computador envia à Agens os números do teu Instagram no início e depois de 14 em 14 dias: seguidores, alcance, visualizações, as métricas de cada reel e das últimas publicações (com o início das legendas), o teu nome e o teu @. O relatório de 14 dias que recebes por email vai também, em cópia oculta, para a Agens. Nunca vão chaves, palavras-passe nem ficheiros. Só a Agens vê estes números. O que é enviado está todo em `ferramentas/registo.py`.
+**Caso de estudo (fase gratuita):** nesta fase a Fábrica de Reels é gratuita em troca de a Agens a usar como caso de estudo. Se aceitares no `/comecar`, o teu computador envia à Agens os números do teu Instagram no início e depois de 14 em 14 dias: seguidores, alcance, visualizações, as métricas de cada reel e das últimas publicações (com o início das legendas), o teu nome e o teu @. O relatório de 14 dias que recebes por email (PDF + 2 ficheiros CSV com os números de todos os teus vídeos) vai também, em cópia oculta, para a Agens. Nunca vão chaves, palavras-passe nem ficheiros. Só a Agens vê estes números. O que é enviado está todo em `ferramentas/registo.py`.
 
  As pastas RAW, B-rolls e Músicas da tua Drive ficam partilhadas **por link, só leitura**, para o computador as conseguir ler sozinho: só quem tiver o link as consegue abrir.
 

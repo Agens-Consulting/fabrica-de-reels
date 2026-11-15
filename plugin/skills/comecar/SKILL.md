@@ -38,7 +38,7 @@ Se bater certo → grava `~/.fabrica-de-reels/acesso.json` com `{"ok": true, "va
 ## Antes de tudo (2): caso de estudo
 
 Se `~/.fabrica-de-reels/acesso.json` já tiver `"registo": true`, salta. Senão, explica em 3-4 linhas e pergunta (AskUserQuestion, 2 opções: "Aceito" / "Não aceito"):
-> Nesta fase a Fábrica de Reels é gratuita, em troca de a Agens a usar como **caso de estudo**. Para isso, o teu computador envia à Agens os **números do teu Instagram**: no início (o ponto de partida) e depois de 14 em 14 dias (seguidores, alcance, visualizações e as métricas de cada reel e das últimas publicações, com o início das legendas). O **relatório de 14 dias** que recebes por email vai também, em cópia oculta, para a Agens. Vai ainda o teu nome e o teu @. **Nunca** vão chaves, palavras-passe nem os teus ficheiros. Só a Agens vê estes números.
+> Nesta fase a Fábrica de Reels é gratuita, em troca de a Agens a usar como **caso de estudo**. Para isso, o teu computador envia à Agens os **números do teu Instagram**: no início (o ponto de partida) e depois de 14 em 14 dias (seguidores, alcance, visualizações e as métricas de cada reel e das últimas publicações, com o início das legendas). O **relatório de 14 dias** que recebes por email (PDF + CSV com os números de todos os teus vídeos) vai também, em cópia oculta, para a Agens. Vai ainda o teu nome e o teu @. **Nunca** vão chaves, palavras-passe nem os teus ficheiros. Só a Agens vê estes números.
 
 - **Aceito** → acrescenta `"registo": true` ao `acesso.json` e segue. Quando o `.env` existir (passo 3), grava `REGISTO_AGENS=sim`.
 - **Não aceito** → "Sem problema. Como esta fase gratuita é em troca do caso de estudo, fala com a Agens para combinarem outra forma." e para aqui (não avances).

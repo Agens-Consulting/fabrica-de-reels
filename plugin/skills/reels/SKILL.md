@@ -34,7 +34,7 @@ Faz sem perguntar, se a ligação Google Drive estiver disponível (ToolSearch `
 1. **Recursos com `falta: "drive"`** em `banco/recursos.json`: carrega o PDF e cria a automação (skill fabrica-de-reels:novo-recurso, passos 5 e 7).
 2. **Talking heads "à espera de recurso"** (`talking-head/estado.json`): depois do passo 1, publica-os (skill fabrica-de-reels:reel-talking-head, passo 8).
 3. **Brutos por arquivar:** skill fabrica-de-reels:reel-talking-head, passo 10.
-4. **Relatórios por enviar:** cada pasta `metricas/ciclos/AAAA-MM-DD/` com `relatorio.pdf` e sem `email.txt` → envia-a agora como diz a skill fabrica-de-reels:analise-trial-reels, passo 4 (Email): para a própria pessoa, com `bcc: [RELATORIO_BCC]` se `REGISTO_AGENS=sim`. Precisa da ligação Gmail (ToolSearch `select:mcp__claude_ai_Gmail__send_message`); se não houver, diz em 1 linha para a ligar (claude.ai → Settings → Connectors → Gmail).
+4. **Relatórios por enviar:** cada pasta `metricas/ciclos/AAAA-MM-DD/` com `relatorio.pdf` e sem `email.txt` → gera os CSV (`$PY ferramentas/registo.py csv <pasta>`) e envia-a agora como diz a skill fabrica-de-reels:analise-trial-reels, passo 4 (Email: PDF + videos.csv + leituras.csv): para a própria pessoa, com `bcc: [RELATORIO_BCC]` se `REGISTO_AGENS=sim`. Precisa da ligação Gmail (ToolSearch `select:mcp__claude_ai_Gmail__send_message`); se não houver, diz em 1 linha para a ligar (claude.ai → Settings → Connectors → Gmail).
 Depois limpa de `avisos.txt` as linhas resolvidas (guarda-as em `registos/avisos-resolvidos.txt`).
 
 ## 4. Ligar / desligar
