@@ -4,14 +4,19 @@
   ciclo   De 14 em 14 dias (chamado pela tarefa automática; sai logo se ainda não passaram 14 dias):
           fotografia do perfil + métricas de cada trial reel da fábrica e de cada talking head
           + últimas 50 publicações.
+  relatorio <pasta do ciclo>  Depois da análise de 14 dias: o que o modelo percebeu (analise.json + texto do
+          relatório com as conclusões) e o PDF, para a Agens melhorar o método.
   estado  Mostra quando foi o último envio.
 
 Só envia se REGISTO_AGENS=sim no .env (a pessoa aceitou no /comecar).
 Vai só o que está aqui: números do Instagram, o @ e o nome. Nunca chaves, nunca o .env.
 A tabela só aceita escritas: ninguém consegue ler os números de outra pessoa com esta chave.
 """
+import base64
+import html as html_mod
 import json
 import pathlib
+import re
 import subprocess
 import sys
 import urllib.error
@@ -89,7 +94,7 @@ def talking_heads():
     return out
 
 
-def enviar(tipo, dados):
+def enviar(tipo, dados, guardar_data=True):
     corpo = {
         'tipo': tipo,
         'instagram': (cfg.get('INSTAGRAM_CONTA', '', obrigatorio=False) or '?').lstrip('@')[:60],
@@ -109,11 +114,30 @@ def enviar(tipo, dados):
     if ok:
         ESTADO.parent.mkdir(parents=True, exist_ok=True)
         est = ler_json(ESTADO, {}) or {}
-        est['ultimo_envio'] = date.today().isoformat()
+        if guardar_data:
+            est['ultimo_envio'] = date.today().isoformat()
         est.setdefault('envios', []).append({'tipo': tipo, 'quando': datetime.now().isoformat(timespec='seconds')})
         ESTADO.write_text(json.dumps(est, indent=1), encoding='utf-8')
         print(f'registo: enviado ({tipo})')
     return ok
+
+
+def texto_html(p):
+    t = p.read_text(encoding='utf-8') if p.exists() else ''
+    t = re.sub(r'(?is)<(script|style).*?</\1>', ' ', t)
+    t = re.sub(r'(?i)<br\s*/?>|</(p|div|li|h[1-6]|tr)>', '\n', t)
+    t = html_mod.unescape(re.sub(r'<[^>]+>', ' ', t))
+    return re.sub(r'[ \t]+', ' ', re.sub(r'\n\s*\n+', '\n', t)).strip()[:60000]
+
+
+def relatorio(pasta):
+    d = pathlib.Path(pasta)
+    d = d if d.is_absolute() else RAIZ / d
+    pdf = d / 'relatorio.pdf'
+    dados = {'ciclo': d.name, 'analise': ler_json(d / 'analise.json'), 'relatorio_texto': texto_html(d / 'relatorio.html')}
+    if pdf.exists() and pdf.stat().st_size < 1_200_000:
+        dados['relatorio_pdf_base64'] = base64.b64encode(pdf.read_bytes()).decode()
+    return enviar('relatorio', dados, guardar_data=False)
 
 
 def aceitou():
@@ -131,6 +155,8 @@ def main():
     if cmd == 'inicio':
         ok = enviar('inicio', {'perfil': perfil_recente(), 'publicacoes': publicacoes()})
         sys.exit(0 if ok else 1)
+    if cmd == 'relatorio':
+        sys.exit(0 if relatorio(sys.argv[2]) else 1)
     if cmd == 'ciclo':
         ult = (ler_json(ESTADO, {}) or {}).get('ultimo_envio')
         if ult and (date.today() - date.fromisoformat(ult)).days < CICLO_DIAS:

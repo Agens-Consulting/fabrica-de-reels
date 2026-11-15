@@ -38,7 +38,7 @@ Se bater certo → grava `~/.fabrica-de-reels/acesso.json` com `{"ok": true, "va
 ## Antes de tudo (2): caso de estudo
 
 Se `~/.fabrica-de-reels/acesso.json` já tiver `"registo": true`, salta. Senão, explica em 3-4 linhas e pergunta (AskUserQuestion, 2 opções: "Aceito" / "Não aceito"):
-> Nesta fase a Fábrica de Reels é gratuita, em troca de a Agens a usar como **caso de estudo**. Para isso, o teu computador envia à Agens os **números do teu Instagram**: no início (o ponto de partida) e depois de 14 em 14 dias (seguidores, alcance, visualizações e as métricas de cada reel e das últimas publicações, com o início das legendas). Vai também o teu nome e o teu @. **Nunca** vão chaves, palavras-passe nem os teus ficheiros. Só a Agens vê estes números.
+> Nesta fase a Fábrica de Reels é gratuita, em troca de a Agens a usar como **caso de estudo**. Para isso, o teu computador envia à Agens os **números do teu Instagram**: no início (o ponto de partida) e depois de 14 em 14 dias (seguidores, alcance, visualizações e as métricas de cada reel e das últimas publicações, com o início das legendas). O **relatório de 14 dias** que recebes por email vai também, em cópia oculta, para a Agens. Vai ainda o teu nome e o teu @. **Nunca** vão chaves, palavras-passe nem os teus ficheiros. Só a Agens vê estes números.
 
 - **Aceito** → acrescenta `"registo": true` ao `acesso.json` e segue. Quando o `.env` existir (passo 3), grava `REGISTO_AGENS=sim`.
 - **Não aceito** → "Sem problema. Como esta fase gratuita é em troca do caso de estudo, fala com a Agens para combinarem outra forma." e para aqui (não avances).
@@ -87,7 +87,7 @@ Mostra em ~10 linhas o que percebeste e propõe **6 a 10 temas** para os trial r
 
 ## 6. Google Drive
 
-1. Confirma que a ligação existe: ToolSearch `select:mcp__claude_ai_Google_Drive__create_file,mcp__claude_ai_Google_Drive__share_file,mcp__claude_ai_Google_Drive__search_files`. Se não vier: pede para ligar em claude.ai → Definições → Conectores → **Google Drive**, e depois reiniciar o Claude Code e escrever /comecar (retoma aqui).
+1. Confirma que as ligações existem: ToolSearch `select:mcp__claude_ai_Google_Drive__create_file,mcp__claude_ai_Google_Drive__share_file,mcp__claude_ai_Google_Drive__search_files,mcp__claude_ai_Gmail__send_message`. Se faltar alguma: pede para ligar em claude.ai → Settings → Connectors → **Google Drive** e **Gmail** (o Gmail serve para lhe mandar os relatórios de 14 em 14 dias), e depois reiniciar o Claude e escrever /comecar (retoma aqui). Descobre já o email da pessoa (o "From" de uma mensagem em `in:sent`, com `mcp__claude_ai_Gmail__search_threads`) e grava `RELATORIO_EMAIL`.
 2. AskUserQuestion: onde criar a pasta "Fábrica de Reels" — "Na raiz da minha Drive (recomendado)" / "Dentro de uma pasta que vou indicar". Se indicar, encontra-a com `search_files` (`title contains '...' and mimeType = 'application/vnd.google-apps.folder'`).
 3. Cria (create_file com `contentMimeType: application/vnd.google-apps.folder`): `Fábrica de Reels` e lá dentro `1. RAW (vídeos a falar)`, `2. PUBLICADOS`, `3. B-rolls`, `4. Músicas`, `5. Recursos`.
 4. Partilha **por link, só leitura** (share_file com `permissionId: "anyoneWithLink"`, `role: "reader"`) as pastas **RAW, B-rolls e Músicas**. Explica numa frase porquê: é assim que o computador as lê sozinho, sem chaves; só quem tiver o link (impossível de adivinhar) consegue ver, e são vídeos que vão ser publicados na mesma. A pasta "Fábrica de Reels", a PUBLICADOS e a Recursos não se partilham (os PDFs de recursos partilham-se um a um).
