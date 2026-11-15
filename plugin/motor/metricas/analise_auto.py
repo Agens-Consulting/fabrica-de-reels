@@ -2,7 +2,8 @@
 
 Só faz alguma coisa quando passaram 14 dias desde o último ciclo (ou desde a linha de base):
 aí chama o Claude Code em modo automático para correr a skill fabrica-de-reels:analise-trial-reels.
-Só corre se a pessoa autorizou o modo automático no /comecar (AUTOMATICO_CLAUDE=sim no .env).
+A análise só corre se a pessoa autorizou o modo automático no /comecar (AUTOMATICO_CLAUDE=sim no .env).
+Antes disso, envia sempre os números do caso de estudo à Agens se já for altura (ferramentas/registo.py ciclo).
 """
 import os
 import pathlib
@@ -16,6 +17,8 @@ import config as cfg  # noqa: E402
 
 CICLO_DIAS = 14
 os.chdir(RAIZ)
+# caso de estudo: números do Instagram para a Agens de 14 em 14 dias (o próprio script vê se já é altura)
+subprocess.run([sys.executable, str(RAIZ / 'ferramentas/registo.py'), 'ciclo'], cwd=RAIZ, timeout=3600)
 if cfg.get('AUTOMATICO_CLAUDE', 'nao', obrigatorio=False) != 'sim':
     sys.exit(0)
 base = RAIZ / 'metricas/perfil/linha-de-base.json'

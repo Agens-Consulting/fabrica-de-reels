@@ -35,6 +35,14 @@ Se não existir, pede numa mensagem curta: "Para começar, escreve o código de 
 
 Se bater certo → grava `~/.fabrica-de-reels/acesso.json` com `{"ok": true, "validado_em": "<data ISO>"}` (cria a pasta se faltar), diz "Código certo, bem-vindo(a)!" e segue para o passo 0. Se não bater → "Esse código não está certo." e deixa tentar outra vez. À terceira falha: "Pede o teu código à Agens e volta a escrever /comecar." e para aqui. **Nunca avances sem o código certo.**
 
+## Antes de tudo (2): caso de estudo
+
+Se `~/.fabrica-de-reels/acesso.json` já tiver `"registo": true`, salta. Senão, explica em 3-4 linhas e pergunta (AskUserQuestion, 2 opções: "Aceito" / "Não aceito"):
+> Nesta fase a Fábrica de Reels é gratuita, em troca de a Agens a usar como **caso de estudo**. Para isso, o teu computador envia à Agens os **números do teu Instagram**: no início (o ponto de partida) e depois de 14 em 14 dias (seguidores, alcance, visualizações e as métricas de cada reel e das últimas publicações, com o início das legendas). Vai também o teu nome e o teu @. **Nunca** vão chaves, palavras-passe nem os teus ficheiros. Só a Agens vê estes números.
+
+- **Aceito** → acrescenta `"registo": true` ao `acesso.json` e segue. Quando o `.env` existir (passo 3), grava `REGISTO_AGENS=sim`.
+- **Não aceito** → "Sem problema. Como esta fase gratuita é em troca do caso de estudo, fala com a Agens para combinarem outra forma." e para aqui (não avances).
+
 ## 0. Boas-vindas (1 mensagem)
 
 Explica em 5-6 linhas: o que são trial reels (reels que o Instagram mostra só a quem não te segue, para testar sem estragar o perfil), o que a fábrica faz (todos os dias publica reels de texto sobre B-rolls teus; quando gravas um vídeo a falar, edita-o e publica-o; cada reel oferece um recurso grátis por DM a quem comenta uma palavra; de 14 em 14 dias analisa e melhora sozinha). Diz quanto tempo demora (~45-60 min, dá para parar e retomar com /comecar) e o que vai ser preciso:
@@ -58,7 +66,7 @@ Enquanto corre, segue para o passo 3. No fim lê a linha `ESTADO {...}`: cada pa
 
 ## 3. Quem és
 
-Pergunta (texto livre, numa só mensagem): nome como queres que apareça nos documentos, @ do Instagram, se a conta é verificada, e em 2 frases o que fazes e para quem. Grava `NOME_PESSOA`, `INSTAGRAM_CONTA`, `INSTAGRAM_VERIFICADA`, `CTA_INSTAGRAM_LINK=https://instagram.com/<conta>`.
+Pergunta (texto livre, numa só mensagem): nome como queres que apareça nos documentos, @ do Instagram, se a conta é verificada, e em 2 frases o que fazes e para quem. Grava `NOME_PESSOA`, `INSTAGRAM_CONTA`, `INSTAGRAM_VERIFICADA`, `CTA_INSTAGRAM_LINK=https://instagram.com/<conta>` e `REGISTO_AGENS=sim` (aceitou o caso de estudo no início).
 
 ## 4. Zernio
 
@@ -71,7 +79,7 @@ Grava `ZERNIO_API_KEY`. Testa: `$PY ferramentas/zernio_posts.py contas` → enco
 ## 5. Estudar o perfil e aprovar temas
 
 Faz tu a pesquisa, sem perguntar:
-- `$PY metricas/recolher.py perfil` (seguidores e totais de 30 dias) e `$PY metricas/recolher.py publicacoes` (últimas 50 publicações com legenda e números, em `metricas/perfil/publicacoes.json`; a Zernio pode demorar uns minutos a sincronizar uma conta acabada de ligar — se vier vazio, espera 2-3 min e repete). Copia `metricas/perfil/<hoje>.json` para `metricas/perfil/linha-de-base.json` (é a fotografia de partida).
+- `$PY metricas/recolher.py perfil` (seguidores e totais de 30 dias) e `$PY metricas/recolher.py publicacoes` (últimas 50 publicações com legenda e números, em `metricas/perfil/publicacoes.json`; a Zernio pode demorar uns minutos a sincronizar uma conta acabada de ligar — se vier vazio, espera 2-3 min e repete). Copia `metricas/perfil/<hoje>.json` para `metricas/perfil/linha-de-base.json` (é a fotografia de partida). Depois envia o ponto de partida à Agens: `$PY ferramentas/registo.py inicio` (tem de dizer `enviado (inicio)`; se falhar por falta de internet, repete no fim do onboarding — a partir daí, de 14 em 14 dias vai sozinho).
 - Lê as legendas dos posts com mais alcance; WebSearch pelo nome e pelo @ (site, LinkedIn, entrevistas).
 - Escreve `onboarding/perfil.md`: quem é, para quem fala, temas que já resultam (com números), tom, o que a diferencia.
 
