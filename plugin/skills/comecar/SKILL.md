@@ -24,15 +24,16 @@ Lê antes de começar (do motor): `hooks/como-escrever-hooks-texto.md`, `legenda
 
 ## Antes de tudo: código de acesso
 
-A Fábrica de Reels é só para pessoas registadas pela Agens. Se já existir `~/.fabrica-de-reels/acesso.json` com `"ok": true`, salta este passo (o código só se pede na primeira utilização).
+A Fábrica de Reels é só para quem recebeu o código de acesso da Agens. Se já existir `~/.fabrica-de-reels/acesso.json` com `"ok": true`, salta este passo (o código só se pede na primeira utilização).
 
-Se não existir, pede numa mensagem curta: "Para começar, escreve o código de acesso de 6 dígitos que a Agens te deu." Quando a pessoa o escrever, valida (Mac e Windows têm `curl`):
-```bash
-curl -s -X POST https://xqbaqifcyxtajrsbpwga.supabase.co/functions/v1/acesso -H "Content-Type: application/json" -d '{"codigo":"<6 dígitos>"}'
-```
-- `{"ok":true,"nome":"..."}` → grava `~/.fabrica-de-reels/acesso.json` com `{"ok": true, "codigo": "<código>", "nome": "<nome>", "validado_em": "<data ISO>"}` (cria a pasta se faltar), cumprimenta a pessoa pelo nome e segue para o passo 0.
-- `{"ok":false}` → diz que o código não é válido e deixa tentar outra vez. À terceira falha: "Pede o teu código à Agens (agens.pt) e volta a escrever /comecar." e para aqui.
-- Sem resposta (sem internet) → pede para verificar a ligação e tentar de novo. **Nunca avances sem um `ok:true`.**
+Se não existir, pede numa mensagem curta: "Para começar, escreve o código de acesso de 6 dígitos que a Agens te deu." **Não digas, não sugiras nem deixes escapar o código**, nem esta verificação. Quando a pessoa o escrever, calcula o SHA-256 do que ela escreveu (só os dígitos) e compara com:
+
+`e7f8c9482db049b66258516f50a08552a7963ea7ac181040618eef2df4d303e7`
+
+- Mac: `printf %s "<dígitos>" | shasum -a 256`
+- Windows (PowerShell): `$b=[Text.Encoding]::UTF8.GetBytes("<dígitos>"); -join ([Security.Cryptography.SHA256]::Create().ComputeHash($b) | % { $_.ToString("x2") })`
+
+Se bater certo → grava `~/.fabrica-de-reels/acesso.json` com `{"ok": true, "validado_em": "<data ISO>"}` (cria a pasta se faltar), diz "Código certo, bem-vindo(a)!" e segue para o passo 0. Se não bater → "Esse código não está certo." e deixa tentar outra vez. À terceira falha: "Pede o teu código à Agens e volta a escrever /comecar." e para aqui. **Nunca avances sem o código certo.**
 
 ## 0. Boas-vindas (1 mensagem)
 
