@@ -1,4 +1,4 @@
-"""Instala ou atualiza a pasta de trabalho dos Reels de Teste (Mac e Windows). Só usa a biblioteca padrão.
+"""Instala ou atualiza a pasta de trabalho da Fábrica de Reels (Mac e Windows). Só usa a biblioteca padrão.
 
     python3 <plugin>/motor/ferramentas/instalar.py <pasta de trabalho> [--sem-modelos]
 
@@ -7,7 +7,7 @@
 2. Cria os ficheiros iniciais que faltem (.env a partir do .env.exemplo, banco vazio…).
 3. Garante o ffmpeg (Mac: Homebrew; Windows: winget) e cria o .venv com as bibliotecas.
 4. Descarrega o Chromium do Playwright (PDFs) e o modelo medium do Whisper (~1,5 GB).
-5. Grava o caminho da pasta em ~/.reels-de-teste/pasta.txt (é assim que as skills a encontram).
+5. Grava o caminho da pasta em ~/.fabrica-de-reels/pasta.txt (é assim que as skills a encontram).
 No fim imprime uma linha JSON com o estado de cada passo.
 """
 import json
@@ -22,7 +22,7 @@ import sys
 MOTOR = pathlib.Path(__file__).resolve().parent.parent
 WINDOWS = platform.system() == 'Windows'
 MAC = platform.system() == 'Darwin'
-PONTEIRO = pathlib.Path.home() / '.reels-de-teste' / 'pasta.txt'
+PONTEIRO = pathlib.Path.home() / '.fabrica-de-reels' / 'pasta.txt'
 PACOTES = ['pillow', 'numpy', 'openai-whisper', 'playwright', 'yt-dlp']
 # ficheiros e pastas que são dados da pessoa: nunca se substituem
 DADOS = ('.env', 'banco/', 'recursos/', 'ctas/automacoes', 'fabrica/historico.jsonl', 'fabrica/saida/',

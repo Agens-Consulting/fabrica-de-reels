@@ -1,6 +1,6 @@
 # Hook textual: estética e posicionamento
 
-Estilo fixo, igual para **todos** os Reels de Teste e para todas as contas, seja qual for o vídeo. Não se personaliza: é o estilo que funciona.
+Estilo fixo, igual para **todos** os reels e para todas as contas, seja qual for o vídeo. Não se personaliza: é o estilo que funciona.
 O hook textual é o texto queimado por cima do vídeo. A escrita dos hooks fica noutro documento.
 
 ---

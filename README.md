@@ -1,4 +1,4 @@
-# Reels de Teste — plugin do Claude Code
+# Fábrica de Reels — plugin do Claude Code
 
 Trial reels de Instagram em piloto automático. Depois de instalado, escreves `/comecar` e o Claude trata do resto contigo:
 
@@ -23,8 +23,8 @@ Funciona em **Mac e Windows**.
 Abre o Claude Code num terminal e escreve, uma linha de cada vez:
 
 ```
-/plugin marketplace add danielmcosta38-spec/reels-de-teste
-/plugin install reels-de-teste@reels-de-teste
+/plugin marketplace add danielmcosta38-spec/fabrica-de-reels
+/plugin install fabrica-de-reels@fabrica-de-reels
 ```
 
 Fecha e volta a abrir o Claude Code. Depois escreve:
@@ -32,7 +32,7 @@ Fecha e volta a abrir o Claude Code. Depois escreve:
 ```
 /comecar
 ```
-(no menu aparece como `/reels-de-teste:comecar`; também podes escrever só "quero começar os reels de teste")
+(no menu aparece como `/fabrica-de-reels:comecar`; também podes escrever só "quero começar a fábrica de reels")
 
 e segue as instruções. O onboarding demora 45-60 minutos (instala o que falta, liga a Zernio e a Drive, estuda o teu perfil, aprova temas contigo, cria os primeiros recursos e mostra-te vídeos de ensaio). Podes parar a meio e continuar mais tarde com `/comecar`.
 
@@ -48,8 +48,8 @@ e segue as instruções. O onboarding demora 45-60 minutos (instala o que falta,
 ## Atualizar
 
 ```
-/plugin marketplace update reels-de-teste
-/plugin update reels-de-teste@reels-de-teste
+/plugin marketplace update fabrica-de-reels
+/plugin update fabrica-de-reels@fabrica-de-reels
 ```
 Reinicia o Claude Code e escreve `/reels` (atualiza a tua pasta sem tocar nos teus dados).
 

@@ -22,7 +22,7 @@ Se o hook fizer os dois primeiros e falhar o terceiro, a pessoa lê, pensa "ok" 
 
 ## 2. Quem vai ler o hook
 
-Os Reels de Teste só são mostrados a **quem não segue a conta**. Isto muda a escrita:
+Os trial reels só são mostrados a **quem não segue a conta**. Isto muda a escrita:
 
 - A pessoa não sabe quem é o dono da conta. O nome dele, o nome da empresa (e qualquer palavra em `HOOK_PALAVRAS_PROIBIDAS` no `.env`) e "a minha empresa" não lhe dizem nada. São palavras que ocupam espaço e não compram atenção.
 - Não há contexto anterior. O hook tem de se perceber sozinho, à primeira leitura.

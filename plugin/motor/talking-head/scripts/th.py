@@ -560,7 +560,7 @@ def cmd_vigiar(_):
     trinco.write_text(novos[0]['id'])
     try:
         f = novos[0]
-        prompt = (f'A pasta de trabalho dos Reels de Teste é {RAIZ}. Usa a skill reels-de-teste:reel-talking-head '
+        prompt = (f'A pasta de trabalho da Fábrica de Reels é {RAIZ}. Usa a skill fabrica-de-reels:reel-talking-head '
                   f'para tratar o vídeo novo da pasta RAW: drive_id {f["id"]} ("{f["name"]}"). '
                   'Estás em modo automático: faz tudo até publicar, sem perguntar nada.')
         with open(logs / f'{datetime.now():%Y%m%d-%H%M%S}.log', 'w', encoding='utf-8') as lg:

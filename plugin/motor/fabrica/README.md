@@ -9,10 +9,10 @@ Nos comandos, `$PY` é o Python do `.venv` da tua pasta de trabalho: `.venv/bin/
 | Quando | Quem | O quê |
 |---|---|---|
 | **Todos os dias, 06:00 do `FUSO`** (tarefa agendada `diario`, `fabrica/diario.py`) | Python, sem IA | 1. `videos/sincronizar.py`: B-rolls e músicas novos da Drive (pastas partilhadas por link, lidas com `ferramentas/drive_publico.py`, sem chaves). 2. `videos/cortar.py`: corta os novos nos melhores 8 s. 3. `metricas/recolher.py`: métricas do perfil e de cada reel. 4. `fabrica/gerar_reel.py dia`: escolhe, monta e agenda os reels do dia (dentro de `HORA_INICIO`-`HORA_FIM`) como trial reels MANUAL. Só corre com `FABRICA_LIGADA=sim` no `.env` |
-| **De 14 em 14 dias** (tarefa agendada `analise`, `metricas/analise_auto.py`) | Claude Code, sozinho, skill `reels-de-teste:analise-trial-reels` | Relatório com as cores e letras da pessoa (`MARCA_*` do `.env`), famílias que ganham e perdem, marca vencedores e retirados, escreve textos novos, roda os recursos (ficam 3, saem 2), pede B-rolls ao dono da conta e, se houver forma de enviar email, manda-lhe o PDF (`RELATORIO_EMAIL` no `.env`). Só corre sozinho com `AUTOMATICO_CLAUDE=sim`. O primeiro ciclo é 14 dias depois da linha de base |
-| **Quando quiseres** | Claude, comando `/reels-de-teste:novo-recurso <ideia, link, vídeo ou ficheiro>` | PDF do recurso, palavra, automação no Zernio e 12 textos para o banco. Entra já se houver menos de 5 recursos ativos; senão fica em espera e entra na próxima análise |
+| **De 14 em 14 dias** (tarefa agendada `analise`, `metricas/analise_auto.py`) | Claude Code, sozinho, skill `fabrica-de-reels:analise-trial-reels` | Relatório com as cores e letras da pessoa (`MARCA_*` do `.env`), famílias que ganham e perdem, marca vencedores e retirados, escreve textos novos, roda os recursos (ficam 3, saem 2), pede B-rolls ao dono da conta e, se houver forma de enviar email, manda-lhe o PDF (`RELATORIO_EMAIL` no `.env`). Só corre sozinho com `AUTOMATICO_CLAUDE=sim`. O primeiro ciclo é 14 dias depois da linha de base |
+| **Quando quiseres** | Claude, comando `/fabrica-de-reels:novo-recurso <ideia, link, vídeo ou ficheiro>` | PDF do recurso, palavra, automação no Zernio e 12 textos para o banco. Entra já se houver menos de 5 recursos ativos; senão fica em espera e entra na próxima análise |
 
-**As tarefas agendadas** criam-se no `/reels-de-teste:comecar` e geres-nas com `$PY ferramentas/agendar.py ligar|desligar|estado` (launchd no Mac, Agendador de Tarefas no Windows).
+**As tarefas agendadas** criam-se no `/fabrica-de-reels:comecar` e geres-nas com `$PY ferramentas/agendar.py ligar|desligar|estado` (launchd no Mac, Agendador de Tarefas no Windows).
 
 **Se o computador estiver desligado ou a dormir às 06:00:** a tarefa corre ao acordar, ao ligar e de hora a hora; o trabalho só se faz uma vez por dia (marca `fabrica/.feito-AAAA-MM-DD`) e, se for tarde, agenda só nas horas que faltam até `HORA_FIM`. A análise faz o mesmo: corre logo que o computador ligue depois de passarem 14 dias. Registos: `fabrica/dia.log`, `metricas/analise.log`. Os avisos que precisem de ti ficam em `avisos.txt` e aparecem na conversa seguinte.
 
@@ -53,4 +53,4 @@ $PY ferramentas/agendar.py estado                  # vê as tarefas agendadas
 ## Notas
 
 - Textos repetem dentro dos 14 dias (só não saem em dias seguidos), para se verem padrões por família.
-- Numa conta nova, o banco e os primeiros recursos fazem-se no `/reels-de-teste:comecar` e com o `/reels-de-teste:novo-recurso`; até haver recursos ativos, a fábrica não publica nada.
+- Numa conta nova, o banco e os primeiros recursos fazem-se no `/fabrica-de-reels:comecar` e com o `/fabrica-de-reels:novo-recurso`; até haver recursos ativos, a fábrica não publica nada.

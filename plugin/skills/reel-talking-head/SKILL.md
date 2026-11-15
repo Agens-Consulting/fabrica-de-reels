@@ -7,7 +7,7 @@ description: Edita e publica os trial reels em que a pessoa fala para a câmara 
 
 Trabalha na pasta de trabalho da pessoa, em `talking-head/`. Tudo o que é pessoal (chave da Zernio, conta, pastas da Drive, horários) vem do `.env` da raiz da pasta de trabalho.
 
-Os guias editoriais são os mesmos dos Reels de Teste e estão uma pasta acima. São eles que decidem o texto:
+Os guias editoriais são os mesmos da Fábrica de Reels e estão uma pasta acima. São eles que decidem o texto:
 
 | Para | Lê |
 |---|---|
@@ -34,7 +34,7 @@ Lê-os antes do primeiro vídeo de cada sessão. Não repitas aqui o que lá est
 ## Fluxo
 
 ```bash
-P="$(cat ~/.reels-de-teste/pasta.txt)"; cd "$P/talking-head"
+P="$(cat ~/.fabrica-de-reels/pasta.txt)"; cd "$P/talking-head"
 PY=../.venv/bin/python; [ -f ../.venv/Scripts/python.exe ] && PY=../.venv/Scripts/python.exe
 export PYTHONUTF8=1
 ```
@@ -105,7 +105,7 @@ Lê o `transcricao.txt` inteiro e escreve `trabalho/<slug>/plano.json`:
   3. Se houver dúvida sobre qual é a coisa certa (dois produtos com o mesmo nome, ou o nome foi dito mal), escolhe o que bate com o contexto do vídeo e escreve o porquê em `notas.md`.
   4. Se não encontrares uma fonte de confiança, **não inventes**. Faz um PDF curto com o que explicou no vídeo e a forma de lá chegar.
   5. Um link sozinho vai direto no botão da DM, com `link.txt` e `ficha.md` na pasta. Se forem vários links (por exemplo "as 5 ferramentas"), faz um PDF com cada uma: o que faz, quando usar e o link oficial.
-- **Recurso que é um documento** (guia, prompts, modelo): segue a skill **reels-de-teste:novo-recurso** a partir do passo 3 (palavra, PDF com `ferramentas/recurso_pdf.py`, Drive, automação, registo em `../banco/recursos.json` com `origem: "talking-head"`). Tem de ser a continuação do que a pessoa disse no vídeo. Se isto passar os 5 ativos, cria-o na mesma e deixa nota em `trabalho/<slug>/notas.md`.
+- **Recurso que é um documento** (guia, prompts, modelo): segue a skill **fabrica-de-reels:novo-recurso** a partir do passo 3 (palavra, PDF com `ferramentas/recurso_pdf.py`, Drive, automação, registo em `../banco/recursos.json` com `origem: "talking-head"`). Tem de ser a continuação do que a pessoa disse no vídeo. Se isto passar os 5 ativos, cria-o na mesma e deixa nota em `trabalho/<slug>/notas.md`.
 - **Em modo automático não há ligação à Drive**, por isso não dá para carregar um PDF novo. Nesse caso: prepara tudo (plano, render, PDF em `../recursos/PALAVRA/`), **não publiques**, marca `"estado": "a espera de recurso"` em `estado.json` para esse drive_id e escreve em `../avisos.txt`: "O vídeo <nome> está pronto mas o recurso PALAVRA precisa de ti: abre o Claude e escreve /reels". Recursos que são só um link não precisam da Drive: esses fazem-se em modo automático.
 
 Nada se publica com um pedido de comentário sem a automação dessa palavra estar ativa.

@@ -1,6 +1,6 @@
 """Texto queimado no vídeo: hook (topo) e legendas (3 palavras de cada vez).
 
-Hook: estilo fixo dos Reels de Teste (hooks/estetica-e-posicionamento.md): Montserrat SemiBold,
+Hook: estilo fixo da Fábrica de Reels (hooks/estetica-e-posicionamento.md): Montserrat SemiBold,
 branco, contorno preto 3 px, sombra quase invisível, centro em y=432, largura útil 900 px, máx. 3 linhas,
 1 palavra de destaque (2 no máximo) com a cor escolhida pelo fundo.
 

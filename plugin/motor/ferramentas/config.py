@@ -115,7 +115,7 @@ def pdf_de_html(html, pdf, largura='A4'):
     return pdf
 
 
-def notificar(texto, titulo='Reels de Teste'):
+def notificar(texto, titulo='Fábrica de Reels'):
     """Notificação no ecrã; nunca falha."""
     try:
         if _plat.system() == 'Darwin':

@@ -2,7 +2,7 @@
 
 ## De onde vêm
 
-1. **O dono da conta guarda os vídeos raw na pasta B-rolls da Drive** (a que o `/reels-de-teste:comecar` criou; o id está em `DRIVE_PASTA_BROLLS` no `.env`). A pasta está partilhada como "qualquer pessoa com o link pode ver", por isso os scripts leem-na sem chaves (`../ferramentas/drive_publico.py`).
+1. **O dono da conta guarda os vídeos raw na pasta B-rolls da Drive** (a que o `/fabrica-de-reels:comecar` criou; o id está em `DRIVE_PASTA_BROLLS` no `.env`). A pasta está partilhada como "qualquer pessoa com o link pode ver", por isso os scripts leem-na sem chaves (`../ferramentas/drive_publico.py`).
 2. **Uma vez por dia, a tarefa automática** (`videos/sincronizar.py`, chamada pela fábrica diária) vê se há vídeos novos nessa pasta. Se houver, descarrega-os para `videos/raw/`. Se não houver, não faz nada. O mesmo para as músicas da pasta Músicas (`DRIVE_PASTA_MUSICAS`), que vão para `audios/raw/`.
 3. **Cada vídeo descarregado entra no registo** (`registo.json`) com: nome, data, duração, tipo de imagem (ex.: carro, secretária, rua, café) e estado (novo, a testar, vencedor, retirado).
 

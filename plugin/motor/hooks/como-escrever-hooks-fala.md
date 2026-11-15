@@ -2,7 +2,7 @@
 
 Este documento é para quem vai escrever os hooks: uma IA ou uma pessoa que nunca viu este projeto. Lê-o inteiro antes de escrever o primeiro hook. O formato irmão, só com texto no ecrã, está em `como-escrever-hooks-texto.md`. O aspeto visual (letra, cor, posição) é um estilo fixo, está em `estetica-e-posicionamento.md` e não se decide aqui.
 
-Antes de escrever, lê também `../onboarding/perfil.md` (quem é o dono da conta, para quem fala, tom) e `../banco/pesquisa-temas.md` (os temas aprovados). Os exemplos em português deste guia vêm de uma conta sobre IA para donos de PME em Portugal: servem para mostrar o padrão; troca o tema, as ferramentas e as coisas do dia a dia pelas do público da tua conta. Na prática, estes vídeos são editados e publicados pela skill `reels-de-teste:reel-talking-head` (ver `../talking-head/README.md`), que segue este guia.
+Antes de escrever, lê também `../onboarding/perfil.md` (quem é o dono da conta, para quem fala, tom) e `../banco/pesquisa-temas.md` (os temas aprovados). Os exemplos em português deste guia vêm de uma conta sobre IA para donos de PME em Portugal: servem para mostrar o padrão; troca o tema, as ferramentas e as coisas do dia a dia pelas do público da tua conta. Na prática, estes vídeos são editados e publicados pela skill `fabrica-de-reels:reel-talking-head` (ver `../talking-head/README.md`), que segue este guia.
 
 ---
 
@@ -28,7 +28,7 @@ Escrever só o texto do ecrã é entregar um terço do trabalho.
 
 ## 2. Quem vai ver
 
-Os Reels de Teste só são mostrados a **quem não segue a conta**:
+Os trial reels só são mostrados a **quem não segue a conta**:
 
 - A pessoa não sabe quem é o dono da conta. O nome dele, o nome da empresa (e qualquer palavra em `HOOK_PALAVRAS_PROIBIDAS` no `.env`) e "a minha empresa" não lhe dizem nada.
 - Não há confiança. O que soar a anúncio ou a guru é ignorado.

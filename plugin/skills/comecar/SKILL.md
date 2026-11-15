@@ -1,19 +1,19 @@
 ---
 name: comecar
-description: Onboarding dos Reels de Teste. Instala tudo, liga a Zernio e a Google Drive, estuda o perfil de Instagram da pessoa, aprova temas, pede B-rolls e músicas, define a estética dos documentos, cria os primeiros recursos grátis com automação de DM, valida legendas e vídeos de ensaio e liga o piloto automático. Usar quando a pessoa escreve "/comecar", "/recomecar", "começar", "configurar os reels de teste", "fazer o onboarding", ou quando outra skill do plugin não encontra a pasta de trabalho (~/.reels-de-teste/pasta.txt). Retoma onde ficou se já foi começado.
+description: Onboarding da Fábrica de Reels. Instala tudo, liga a Zernio e a Google Drive, estuda o perfil de Instagram da pessoa, aprova temas, pede B-rolls e músicas, define a estética dos documentos, cria os primeiros recursos grátis com automação de DM, valida legendas e vídeos de ensaio e liga o piloto automático. Usar quando a pessoa escreve "/comecar", "/recomecar", "começar", "configurar a fábrica de reels", "fazer o onboarding", ou quando outra skill do plugin não encontra a pasta de trabalho (~/.fabrica-de-reels/pasta.txt). Retoma onde ficou se já foi começado.
 ---
 
-# /comecar — onboarding dos Reels de Teste
+# /comecar — onboarding da Fábrica de Reels
 
 Vais pôr a fábrica de trial reels a funcionar para esta pessoa, do zero até "amanhã começamos a publicar". Português de Portugal, frases curtas, tom de colega. **Faz sozinho tudo o que der para fazer sozinho; pergunta só o que depende dela** (logins, chaves, aprovações, gravar). Usa a ferramenta AskUserQuestion para as escolhas, com a opção recomendada em primeiro lugar.
 
 ## Onde está cada coisa
 
 - **Motor do plugin:** `<pasta desta skill>/../../motor` (a mensagem que carregou esta skill diz a "Base directory"). Tem os scripts e os guias.
-- **Pasta de trabalho da pessoa:** criada no passo 1; o caminho fica em `~/.reels-de-teste/pasta.txt`. Tudo o que é dela vive lá: `.env` (privado), banco de textos, recursos, vídeos, históricos.
+- **Pasta de trabalho da pessoa:** criada no passo 1; o caminho fica em `~/.fabrica-de-reels/pasta.txt`. Tudo o que é dela vive lá: `.env` (privado), banco de textos, recursos, vídeos, históricos.
 - Em todos os comandos, a partir do passo 2:
 ```bash
-P="$(cat ~/.reels-de-teste/pasta.txt)"; cd "$P"
+P="$(cat ~/.fabrica-de-reels/pasta.txt)"; cd "$P"
 PY=.venv/bin/python; [ -f .venv/Scripts/python.exe ] && PY=.venv/Scripts/python.exe
 export PYTHONUTF8=1
 ```
@@ -33,7 +33,7 @@ Explica em 5-6 linhas: o que são trial reels (reels que o Instagram mostra só 
 
 ## 1. Pasta de trabalho
 
-AskUserQuestion: onde fica a pasta. Recomendado: `~/ReelsDeTeste` (Mac e Windows). No Mac **evita a Secretária e os Documentos** (o macOS bloqueia as tarefas automáticas nessas pastas). Outras opções: "Outra pasta (diz-me qual)".
+AskUserQuestion: onde fica a pasta. Recomendado: `~/FabricaDeReels` (Mac e Windows). No Mac **evita a Secretária e os Documentos** (o macOS bloqueia as tarefas automáticas nessas pastas). Outras opções: "Outra pasta (diz-me qual)".
 
 ## 2. Instalar (em segundo plano)
 
@@ -67,9 +67,9 @@ Mostra em ~10 linhas o que percebeste e propõe **6 a 10 temas** para os trial r
 ## 6. Google Drive
 
 1. Confirma que a ligação existe: ToolSearch `select:mcp__claude_ai_Google_Drive__create_file,mcp__claude_ai_Google_Drive__share_file,mcp__claude_ai_Google_Drive__search_files`. Se não vier: pede para ligar em claude.ai → Definições → Conectores → **Google Drive**, e depois reiniciar o Claude Code e escrever /comecar (retoma aqui).
-2. AskUserQuestion: onde criar a pasta "Reels de Teste" — "Na raiz da minha Drive (recomendado)" / "Dentro de uma pasta que vou indicar". Se indicar, encontra-a com `search_files` (`title contains '...' and mimeType = 'application/vnd.google-apps.folder'`).
-3. Cria (create_file com `contentMimeType: application/vnd.google-apps.folder`): `Reels de Teste` e lá dentro `1. RAW (vídeos a falar)`, `2. PUBLICADOS`, `3. B-rolls`, `4. Músicas`, `5. Recursos`.
-4. Partilha **por link, só leitura** (share_file com `permissionId: "anyoneWithLink"`, `role: "reader"`) as pastas **RAW, B-rolls e Músicas**. Explica numa frase porquê: é assim que o computador as lê sozinho, sem chaves; só quem tiver o link (impossível de adivinhar) consegue ver, e são vídeos que vão ser publicados na mesma. A pasta "Reels de Teste", a PUBLICADOS e a Recursos não se partilham (os PDFs de recursos partilham-se um a um).
+2. AskUserQuestion: onde criar a pasta "Fábrica de Reels" — "Na raiz da minha Drive (recomendado)" / "Dentro de uma pasta que vou indicar". Se indicar, encontra-a com `search_files` (`title contains '...' and mimeType = 'application/vnd.google-apps.folder'`).
+3. Cria (create_file com `contentMimeType: application/vnd.google-apps.folder`): `Fábrica de Reels` e lá dentro `1. RAW (vídeos a falar)`, `2. PUBLICADOS`, `3. B-rolls`, `4. Músicas`, `5. Recursos`.
+4. Partilha **por link, só leitura** (share_file com `permissionId: "anyoneWithLink"`, `role: "reader"`) as pastas **RAW, B-rolls e Músicas**. Explica numa frase porquê: é assim que o computador as lê sozinho, sem chaves; só quem tiver o link (impossível de adivinhar) consegue ver, e são vídeos que vão ser publicados na mesma. A pasta "Fábrica de Reels", a PUBLICADOS e a Recursos não se partilham (os PDFs de recursos partilham-se um a um).
 5. Grava os ids: `DRIVE_PASTA_RAIZ`, `DRIVE_PASTA_TALKING_HEAD_RAW`, `DRIVE_PASTA_TALKING_HEAD_PUBLICADOS`, `DRIVE_PASTA_BROLLS`, `DRIVE_PASTA_MUSICAS`, `DRIVE_PASTA_RECURSOS`.
 6. Testa: `$PY ferramentas/drive_publico.py listar <id da pasta B-rolls>` tem de responder `[]` sem erro.
 7. Telemóvel: diz-lhe para instalar a app **Google Drive** e, para mandar um vídeo: Galeria → Partilhar → Drive → escolher a pasta.
@@ -94,7 +94,7 @@ Pergunta também (texto livre, tudo opcional) os links para a última página do
 
 ## 10. Os primeiros recursos (3)
 
-Propõe 3 recursos grátis (1 por tema aprovado, os mais fortes), cada um com título, o que entrega em 3-5 páginas, e a palavra do CTA (regras de `ctas/como-construir-cta.md`: rara, ≥4 letras, sem acentos). AskUserQuestion para aprovar/trocar. Depois, para cada um, segue a skill **reels-de-teste:novo-recurso** a partir do passo 3 (palavra, PDF com `ferramentas/recurso_pdf.py`, revisão das prévias, Drive, automação na Zernio, 12 textos para o banco). Ficam todos `ativo: true`. No fim tens ≥36 textos no banco.
+Propõe 3 recursos grátis (1 por tema aprovado, os mais fortes), cada um com título, o que entrega em 3-5 páginas, e a palavra do CTA (regras de `ctas/como-construir-cta.md`: rara, ≥4 letras, sem acentos). AskUserQuestion para aprovar/trocar. Depois, para cada um, segue a skill **fabrica-de-reels:novo-recurso** a partir do passo 3 (palavra, PDF com `ferramentas/recurso_pdf.py`, revisão das prévias, Drive, automação na Zernio, 12 textos para o banco). Ficam todos `ativo: true`. No fim tens ≥36 textos no banco.
 
 ## 11. Validar com a pessoa
 
@@ -116,4 +116,4 @@ Lembra: o computador tem de estar ligado (pode estar a dormir; corre ao acordar)
 
 Agenda um primeiro teste já: `$PY fabrica/gerar_reel.py dia --ensaio` (mostra os horários e textos que sairiam). Escreve `onboarding/resumo.md` (o que ficou configurado, temas, recursos e palavras, B-rolls, o que falta). Marca o onboarding como feito no `estado.json`.
 
-Mensagem final, curta: "Está pronto. Amanhã às <HORA_INICIO> sai o primeiro reel." + o que ela faz daqui para a frente (gravar B-rolls quando puder, mandar talking heads para a RAW, escrever /reels para ver o estado, /reels-de-teste:novo-recurso para um recurso novo) + o que ainda falta, se faltar alguma coisa (B-rolls, músicas, links de CTA).
+Mensagem final, curta: "Está pronto. Amanhã às <HORA_INICIO> sai o primeiro reel." + o que ela faz daqui para a frente (gravar B-rolls quando puder, mandar talking heads para a RAW, escrever /reels para ver o estado, /fabrica-de-reels:novo-recurso para um recurso novo) + o que ainda falta, se faltar alguma coisa (B-rolls, músicas, links de CTA).

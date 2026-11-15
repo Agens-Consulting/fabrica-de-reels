@@ -16,7 +16,7 @@ import time
 import urllib.parse
 import urllib.request
 
-UA = {'User-Agent': 'Mozilla/5.0 (reels-de-teste)'}
+UA = {'User-Agent': 'Mozilla/5.0 (fabrica-de-reels)'}
 VIDEO = ('.mp4', '.mov', '.m4v', '.avi', '.mkv', '.webm', '.hevc', '.3gp')
 AUDIO = ('.mp3', '.m4a', '.wav', '.aac', '.ogg', '.flac')
 

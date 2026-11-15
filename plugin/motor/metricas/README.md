@@ -40,11 +40,11 @@ Fonte: a API do Zernio. **Os trial reels devolvem estatísticas** (`GET /analyti
 - `metricas/perfil/AAAA-MM-DD.json`: fotografia do perfil.
 - `metricas/reels/AAAA-MM-DD.jsonl` e `metricas/reels_ultimo.json`: métricas de cada trial reel.
 
-**Linha de base:** `metricas/perfil/linha-de-base.json`, a fotografia do perfil tirada no arranque (`/reels-de-teste:comecar`), antes do primeiro trial reel: seguidores e, nos últimos 30 dias, views, alcance e visitas ao perfil. Cada ciclo compara com isto para medir quanto do crescimento veio dos trial reels. Numa conta nova, a primeira coisa que corre é esta fotografia (`$PY metricas/recolher.py perfil`). Não há relatório à parte da linha de base: é só esta fotografia.
+**Linha de base:** `metricas/perfil/linha-de-base.json`, a fotografia do perfil tirada no arranque (`/fabrica-de-reels:comecar`), antes do primeiro trial reel: seguidores e, nos últimos 30 dias, views, alcance e visitas ao perfil. Cada ciclo compara com isto para medir quanto do crescimento veio dos trial reels. Numa conta nova, a primeira coisa que corre é esta fotografia (`$PY metricas/recolher.py perfil`). Não há relatório à parte da linha de base: é só esta fotografia.
 
 ## Relatório de 14 em 14 dias (automático)
 
-O ciclo é de **14 dias** e corre **sozinho**: a tarefa agendada `analise` (`metricas/analise_auto.py`, criada com `$PY ferramentas/agendar.py ligar`; launchd no Mac, Agendador de Tarefas no Windows) chama o Claude Code com a skill `reels-de-teste:analise-trial-reels`. Só corre sozinha com `AUTOMATICO_CLAUDE=sim` no `.env`; sem isso, corre-se a skill à mão numa conversa. O primeiro ciclo é 14 dias depois da linha de base. Análise por **famílias** (moldes, temas, caixa, fim do hook, duração, música e trecho, B-roll, hora), não só reel a reel.
+O ciclo é de **14 dias** e corre **sozinho**: a tarefa agendada `analise` (`metricas/analise_auto.py`, criada com `$PY ferramentas/agendar.py ligar`; launchd no Mac, Agendador de Tarefas no Windows) chama o Claude Code com a skill `fabrica-de-reels:analise-trial-reels`. Só corre sozinha com `AUTOMATICO_CLAUDE=sim` no `.env`; sem isso, corre-se a skill à mão numa conversa. O primeiro ciclo é 14 dias depois da linha de base. Análise por **famílias** (moldes, temas, caixa, fim do hook, duração, música e trecho, B-roll, hora), não só reel a reel.
 
 De 14 em 14 dias sai um relatório com **as melhorias que se vão aplicar no mês seguinte, e quem as aplica é o Claude, sozinho.** O dono da conta lê e só intervém se discordar.
 

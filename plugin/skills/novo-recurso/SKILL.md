@@ -8,7 +8,7 @@ description: Cria um recurso grátis novo para os trial reels a partir de uma id
 Entrada: o que vier depois do comando (ideia em texto, link, caminho de um ficheiro, link de um reel). Português de Portugal.
 
 ```bash
-P="$(cat ~/.reels-de-teste/pasta.txt)"; cd "$P"      # se não existir: corre primeiro /reels-de-teste:comecar
+P="$(cat ~/.fabrica-de-reels/pasta.txt)"; cd "$P"      # se não existir: corre primeiro /fabrica-de-reels:comecar
 PY=.venv/bin/python; [ -f .venv/Scripts/python.exe ] && PY=.venv/Scripts/python.exe
 export PYTHONUTF8=1
 ```

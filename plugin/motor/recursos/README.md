@@ -84,4 +84,4 @@ Os links vêm do `.env` (`CTA_*`). Se algum mudar, muda-se lá e os PDFs seguint
 4. O link vai para `recursos/PALAVRA/link.txt`.
 5. Cria-se a automação (passo 5 de `../ctas/como-construir-cta.md`).
 
-Tudo isto faz-se de uma vez com `/reels-de-teste:novo-recurso`.
+Tudo isto faz-se de uma vez com `/fabrica-de-reels:novo-recurso`.

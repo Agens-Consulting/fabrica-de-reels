@@ -1,6 +1,6 @@
 ---
 name: analise-trial-reels
-description: Análise de 14 em 14 dias da fábrica de trial reels. Recolhe métricas da Zernio, cruza todas as variáveis de cada reel (famílias de hook, caixa, segundo hook, duração, música e trecho, B-roll, cor, hora, volume) com os resultados, escreve o relatório com a estética da pessoa e aplica sozinha as mudanças no banco, nos B-rolls, nas músicas e nos recursos. Corre sozinha pela tarefa agendada (ferramentas/agendar.py). Também dispara em "analisa os trial reels", "relatório dos reels de teste", "corre a análise de 14 dias".
+description: Análise de 14 em 14 dias da fábrica de trial reels. Recolhe métricas da Zernio, cruza todas as variáveis de cada reel (famílias de hook, caixa, segundo hook, duração, música e trecho, B-roll, cor, hora, volume) com os resultados, escreve o relatório com a estética da pessoa e aplica sozinha as mudanças no banco, nos B-rolls, nas músicas e nos recursos. Corre sozinha pela tarefa agendada (ferramentas/agendar.py). Também dispara em "analisa os trial reels", "relatório da fábrica de reels", "corre a análise de 14 dias".
 ---
 
 # Análise de 14 dias dos trial reels
@@ -8,7 +8,7 @@ description: Análise de 14 em 14 dias da fábrica de trial reels. Recolhe métr
 Pode correr **sem ninguém a olhar** (tarefa agendada): nesse caso não faças perguntas, decide pelas regras abaixo e deixa tudo escrito. A pessoa lê o relatório e só intervém se discordar.
 
 ```bash
-P="$(cat ~/.reels-de-teste/pasta.txt)"; cd "$P"
+P="$(cat ~/.fabrica-de-reels/pasta.txt)"; cd "$P"
 PY=.venv/bin/python; [ -f .venv/Scripts/python.exe ] && PY=.venv/Scripts/python.exe
 export PYTHONUTF8=1
 ```
@@ -46,7 +46,7 @@ Só com dados suficientes (≥3 saídas; reels com ≥7 dias). Cada mudança fic
 3. **B-rolls** (`videos/registo.json`): `estado: "vencedor"` ou `"fraco"` conforme as sugestões. Os fracos deixam de sair.
 4. **Músicas** (`audios/registo.json`): `trechos_bons: [[ini, fim], …]` com os baldes de 20 s que ganharam.
 5. **Variáveis de teste** (caixa, fim do hook, duração): se uma opção perde com clareza em 2 ciclos seguidos, tira-a da lista em `fabrica/gerar_reel.py` (`CAIXAS`, `FIM_HOOK`, `DURACOES`) e regista porquê. Nunca só com 1 ciclo.
-6. **Recursos (regra dos 5):** ordena por comentários por 1 000 views. Ficam os 3 melhores; os 2 piores passam a `ativo: false` e a "Arquivados" em `recursos/lista.md` (a automação na Zernio fica ligada). Entram 2: **primeiro os que estão em espera** e prontos (`espera: true` sem `falta`); se faltarem, escolhe em `banco/pesquisa-temas.md` (secção C) e cria-os com a skill **reels-de-teste:novo-recurso** — em modo automático não há ligação à Drive, por isso ficam `espera: true, falta: "drive"` e entram na próxima conversa (o /reels trata disso). No primeiro ciclo só se ordena.
+6. **Recursos (regra dos 5):** ordena por comentários por 1 000 views. Ficam os 3 melhores; os 2 piores passam a `ativo: false` e a "Arquivados" em `recursos/lista.md` (a automação na Zernio fica ligada). Entram 2: **primeiro os que estão em espera** e prontos (`espera: true` sem `falta`); se faltarem, escolhe em `banco/pesquisa-temas.md` (secção C) e cria-os com a skill **fabrica-de-reels:novo-recurso** — em modo automático não há ligação à Drive, por isso ficam `espera: true, falta: "drive"` e entram na próxima conversa (o /reels trata disso). No primeiro ciclo só se ordena.
 7. **Volume:** compara o alcance do dia com o nº de reels (regra em `publicacao/regras.md`). Só muda `VOLUMES` ao fim de 4 semanas.
 8. **Pedido de gravações:** se houver menos de 10 B-rolls `novo`/`vencedor` com corte, ou se um tipo ganhar com clareza, escreve no relatório o pedido: quantos e de que tipo.
 

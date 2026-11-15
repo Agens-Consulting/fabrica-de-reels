@@ -4,11 +4,11 @@ Trial reels em que o dono da conta fala para a câmara. Grava (de preferência n
 
 ## Como se usa
 1. Grava o vídeo com espaço por cima da cabeça.
-2. No telemóvel: Galeria → Partilhar → **Drive** → a tua pasta **RAW** dos talking heads (a que o `/reels-de-teste:comecar` criou; o id está em `DRIVE_PASTA_TALKING_HEAD_RAW` no `.env`) → Carregar.
+2. No telemóvel: Galeria → Partilhar → **Drive** → a tua pasta **RAW** dos talking heads (a que o `/fabrica-de-reels:comecar` criou; o id está em `DRIVE_PASTA_TALKING_HEAD_RAW` no `.env`) → Carregar.
 3. Mais nada. Quando o vídeo estiver publicado, as variantes e as legendas ficam no disco, em **`talking-head/publicados/<slug>/`**, e o vídeo bruto passa da RAW para a pasta **PUBLICADOS** da Drive.
 
 ## O que acontece
-A tarefa agendada `vigia` corre `scripts/th.py vigiar` de 15 em 15 minutos. A pasta RAW está partilhada por link (só leitura), por isso o script vê os vídeos novos sem chaves (`../ferramentas/drive_publico.py`). Quando há um vídeo novo, chama o Claude com a skill `reels-de-teste:reel-talking-head`, que segue estes passos:
+A tarefa agendada `vigia` corre `scripts/th.py vigiar` de 15 em 15 minutos. A pasta RAW está partilhada por link (só leitura), por isso o script vê os vídeos novos sem chaves (`../ferramentas/drive_publico.py`). Quando há um vídeo novo, chama o Claude com a skill `fabrica-de-reels:reel-talking-head`, que segue estes passos:
 
 **descarregar → transcrever → plano (cortes, frases, hooks, legenda, recurso) → imagens grátis → render das 2-3 variantes → verificar → publicar como trial reel MANUAL → arquivar**
 

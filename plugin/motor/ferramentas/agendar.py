@@ -25,7 +25,7 @@ import config as cfg  # noqa: E402
 TAREFA = RAIZ / 'ferramentas' / 'tarefa.py'
 NOMES = {'diario': 3600, 'analise': 7200, 'vigia': 900}   # intervalo em segundos
 SISTEMA = platform.system()
-ROTULO = 'pt.reelsdeteste.'
+ROTULO = 'pt.fabricadereels.'
 
 
 def _python_sem_janela():
@@ -78,7 +78,7 @@ def mac_estado():
 
 # --- Windows ------------------------------------------------------------------------------------------
 def _tn(nome):
-    return f'ReelsDeTeste\\{nome}'
+    return f'FabricaDeReels\\{nome}'
 
 
 def win_ligar():
