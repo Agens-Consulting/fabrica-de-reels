@@ -1,0 +1,13 @@
+{
+  "name": "reels-de-teste",
+  "owner": { "name": "Daniel da Costa" },
+  "metadata": { "description": "Trial reels de Instagram em piloto automático, com o Claude Code." },
+  "plugins": [
+    {
+      "name": "reels-de-teste",
+      "source": "./plugin",
+      "description": "Fábrica de trial reels para Instagram: onboarding guiado (/comecar), reels de texto publicados todos os dias sem IA, talking heads editados e publicados sozinhos, recursos grátis com automação de DM na Zernio e análise de 14 em 14 dias.",
+      "version": "1.0.0"
+    }
+  ]
+}
