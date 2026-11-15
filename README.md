@@ -11,7 +11,7 @@ Funciona em **Mac e Windows**.
 
 ## O que precisas
 
-0. **Acesso ao repositório** (é privado): uma conta no GitHub (github.com/signup) e o convite da Agens aceite (chega por email). No terminal, entra no GitHub uma vez: `gh auth login` (ou, no Mac, o Git pede o login na primeira instalação).
+0. **Acesso ao repositório** (é privado): uma conta no GitHub (github.com/signup) e o convite da Agens aceite (chega por email). Para o Git conseguir descarregar o plugin privado, entra no GitHub uma vez no terminal: instala o GitHub CLI (Mac: `brew install gh`; Windows: `winget install GitHub.cli`) e corre `gh auth login` e depois `gh auth setup-git`.
 
 1. **Claude Code** instalado e com sessão iniciada (plano Pro ou Max): https://claude.com/claude-code
    - No Windows, instala também o **Git for Windows** (https://git-scm.com/download/win), que o Claude Code precisa.
