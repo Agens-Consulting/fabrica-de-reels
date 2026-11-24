@@ -26,7 +26,7 @@ Lê primeiro: `recursos/README.md`, `recursos/lista.md`, `ctas/como-construir-ct
 
 ## 2. Resumir e confirmar (uma vez só)
 
-Mostra, curto: título, o que entrega em 3-5 páginas (tópicos), a palavra proposta e 3 hooks de exemplo. Espera o "sim" ou as correções. Depois disto não voltes a perguntar. (Se vieres do /comecar com o recurso já aprovado, salta este passo.)
+Mostra, curto: título, o que entrega em 3-5 páginas (tópicos), a palavra proposta e 3 hooks de exemplo. Os 3 hooks de exemplo já seguem o guia de hooks (versão 2: listas com gancho). Espera o "sim" ou as correções. Depois disto só voltas a perguntar uma vez, para aprovar os 12 hooks (passo 6). (Se vieres do /comecar com o recurso já aprovado, salta este passo.)
 
 ## 3. Palavra do CTA
 
@@ -59,7 +59,12 @@ Se a partilha falhar, não se cria a automação. **Nada se publica a pedir um c
 
 ## 6. Os 12 textos para o banco
 
-12 pares hook + legenda para `banco/textos.json` (estrutura em `fabrica/README.md`), com as proporções de sempre (5 listas, 5 POV, 2 condições; bandeira 🇵🇹 em 4 se a conta for portuguesa), e:
+12 pares hook + legenda para `banco/textos.json` (estrutura em `fabrica/README.md`), seguindo à letra `hooks/como-escrever-hooks-texto.md` (versão 2):
+- se `banco/pesquisa-temas.md` ainda não tiver a secção "Tradução para hooks" (secção 4 do guia), escreve-a primeiro e mostra-a à pessoa em 5 linhas;
+- **10 a 12 listas, cada uma com um gancho** (exclusividade, contra a intuição, hábito, autoridade, filtro de idade ou papel, momento do ano), com pelo menos 4 ganchos diferentes; **0 a 2 POV**, só com uma afirmação difícil de acreditar e verdadeira; **nenhuma condição** ("…se não fizeres isto"); bandeira 🇵🇹 em 4 se a conta for portuguesa;
+- nunca copiar o esqueleto de um exemplo do guia que seja de outro tema; faz o teste da pessoa no sofá (passo 5 da secção 14) e corta os mornos;
+- cada texto leva `"molde"`, `"gancho"` e `"guia": 2`;
+- antes de gravar, mostra os 12 hooks à pessoa (só os hooks, uma linha cada, com o que está `[CONFIRMAR]`) e pede o "sim": é ela que garante que cada facto é verdade na área dela;
 - hooks em MAIÚSCULAS, ≤ 3 linhas de ≤ 22 caracteres, destaque = palavras soltas que existem no hook, sem setas, nunca com palavras de `HOOK_PALAVRAS_PROIBIDAS`;
 - cada legenda só promete o que o recurso tem (faz a lista das promessas e confere com o PDF), acaba em "Se queres …, comenta PALAVRA.";
 - nenhum trecho de mais de 80 caracteres igual a outra legenda do banco;

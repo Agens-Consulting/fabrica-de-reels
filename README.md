@@ -44,6 +44,7 @@ O Claude guia-te pelo resto: instala o que falta, liga a Zernio e a Drive, estud
 |---|---|
 | `/reels` | Ver o que saiu, o que está agendado, avisos; resolver o que ficou à tua espera; ligar/desligar |
 | `/novo-recurso <ideia ou link>` | Criar um recurso grátis novo, com palavra, automação e textos |
+| `/rever-hooks` | Reescrever os hooks do banco com o guia mais recente (listas com gancho, traduzidas para o teu tema); só grava depois do teu "sim" |
 | Mandar um vídeo para a pasta **1. RAW** da Drive | O Claude edita-o e publica-o sozinho |
 | Mandar B-rolls para a pasta **3. B-rolls** | Entram na fábrica no dia seguinte |
 

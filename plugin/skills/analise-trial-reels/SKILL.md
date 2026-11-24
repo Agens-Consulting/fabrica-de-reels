@@ -28,7 +28,7 @@ Saída em `metricas/ciclos/AAAA-MM-DD/` (`analise.json`, `relatorio.html`, `rela
 
 ## 2. Ler e concluir (o trabalho da IA)
 
-Lê `analise.json` inteiro. Pensa em **famílias e estruturas**, não em reels soltos: que moldes (POV, lista, condição) ganham, que temas, que caixa, que fim de hook, que durações, que trechos de música, que tipos de B-roll, que horas. Um vencedor isolado não chega; uma família com n ≥ 3 e consistente sim. Diz sempre o tamanho da amostra.
+Lê `analise.json` inteiro. Pensa em **famílias e estruturas**, não em reels soltos: que moldes (lista, POV; condição só nos textos antigos) e que ganchos das listas ganham, se o guia de hooks 2 rende mais do que o 1 (família "Versão do guia de hooks"), que temas, que caixa, que fim de hook, que durações, que trechos de música, que tipos de B-roll, que horas. Um vencedor isolado não chega; uma família com n ≥ 3 e consistente sim. Diz sempre o tamanho da amostra.
 
 Escreve as conclusões no `relatorio.html`, no marcador `<!--CONCLUSOES-->`, no mesmo estilo:
 - 3 a 6 conclusões, cada uma com o número que a sustenta;
@@ -42,7 +42,7 @@ Depois volta a gerar o PDF: `$PY -c "import sys; sys.path.insert(0,'ferramentas'
 Só com dados suficientes (≥3 saídas; reels com ≥7 dias). Cada mudança fica em `metricas/ciclos/AAAA-MM-DD/mudancas.md`.
 
 1. **Textos** (`banco/textos.json`): aplica as sugestões de estado (`vencedor`, `retirado`, `a testar`). O gerador dá prioridade aos vencedores (80/20).
-2. **Textos novos:** 15 a 30 para os temas ativos, **dentro das famílias que ganharam**, seguindo à letra `hooks/como-escrever-hooks-texto.md`, `legendas/como-escrever-legendas.md` e o que cada recurso entrega (`recursos/PALAVRA/ficha.md`). MAIÚSCULAS, ≤ 3 linhas de ≤ 22 caracteres, destaque = palavras do hook, sem setas, `origem: "ciclo AAAA-MM-DD"`. Valida as larguras com `fabrica/gerar_reel.py` antes de gravar.
+2. **Textos novos:** 15 a 30 para os temas ativos, **dentro das famílias que ganharam**, seguindo à letra `hooks/como-escrever-hooks-texto.md`, `legendas/como-escrever-legendas.md` e o que cada recurso entrega (`recursos/PALAVRA/ficha.md`). Listas com gancho como molde principal, nenhuma condição, cada texto com `"molde"`, `"gancho"` e `"guia": 2`. MAIÚSCULAS, ≤ 3 linhas de ≤ 22 caracteres, destaque = palavras do hook, sem setas, `origem: "ciclo AAAA-MM-DD"`. Valida as larguras com `fabrica/gerar_reel.py` antes de gravar.
 3. **B-rolls** (`videos/registo.json`): `estado: "vencedor"` ou `"fraco"` conforme as sugestões. Os fracos deixam de sair.
 4. **Músicas** (`audios/registo.json`): `trechos_bons: [[ini, fim], …]` com os baldes de 20 s que ganharam.
 5. **Variáveis de teste** (caixa, fim do hook, duração): se uma opção perde com clareza em 2 ciclos seguidos, tira-a da lista em `fabrica/gerar_reel.py` (`CAIXAS`, `FIM_HOOK`, `DURACOES`) e regista porquê. Nunca só com 1 ciclo.

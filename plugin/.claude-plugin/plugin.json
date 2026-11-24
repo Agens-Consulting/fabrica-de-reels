@@ -1,6 +1,6 @@
 {
   "name": "fabrica-de-reels",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Trial reels de Instagram em piloto automático: onboarding (/comecar), fábrica diária, talking heads, recursos com automação Zernio e análise de 14 dias. Mac e Windows.",
   "author": { "name": "Daniel Costa · Agens" },
   "keywords": ["instagram", "trial reels", "zernio", "reels", "conteúdo"]

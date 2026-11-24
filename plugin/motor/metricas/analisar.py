@@ -63,6 +63,8 @@ INDICE = ['views', 'guardados', 'partilhas', 'comentarios']
 
 VARIAVEIS = [  # chave, rótulo
     ('molde', 'Molde do hook'),
+    ('gancho', 'Gancho da lista (guia 2)'),
+    ('guia', 'Versão do guia de hooks'),
     ('recurso', 'Recurso (tema)'),
     ('caixa', 'Caixa do hook'),
     ('fim', 'Fim do hook'),
@@ -212,6 +214,8 @@ def montar_reel(h, leit, textos, volume_por_dia, ate):
     balde = int(trecho[0] // 20) * 20 if trecho else None
     fam = {
         'molde': h.get('molde') or t.get('molde'),
+        'gancho': t.get('gancho'),
+        'guia': f"guia {t.get('guia', 1)}",
         'recurso': h.get('recurso') or t.get('recurso'),
         'caixa': hv.get('caixa'),
         'fim': hv.get('fim'),

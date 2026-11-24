@@ -26,6 +26,7 @@ O plugin pode ter sido atualizado. Corre `python3 "<pasta desta skill>/../../mot
 - **Agendado:** `$PY ferramentas/zernio_posts.py posts --estado scheduled` (quantos e até quando).
 - **Tarefas automáticas:** `$PY ferramentas/agendar.py estado` + últimas linhas de `registos/diario.log`, `registos/vigia.log`, `registos/analise.log` (só se houver erros, mostra-os).
 - **Banco:** nº de textos por estado, recursos ativos/em espera, B-rolls com corte.
+- **Hooks do guia antigo:** se houver textos com `estado` diferente de `retirado` e de `vencedor` e sem `"guia": 2`, diz em 2 linhas: "O guia de hooks mudou (as listas com gancho rendem mais; as condições e os POV de cena deixaram de se usar). Tens N textos escritos com o guia antigo." Oferece correr já a skill fabrica-de-reels:rever-hooks (AskUserQuestion: "Rever agora" / "Mais tarde"). Se ela disser que sim, segue essa skill.
 - **Próxima análise:** 14 dias depois do último `metricas/ciclos/*`.
 
 ## 3. Resolver o que está à espera
